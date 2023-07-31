@@ -1,28 +1,63 @@
-/* Data */
-const gameData = [
-    { definition: "A vehicle with four wheels that is usually propelled by an engine", word: "Car", options: ["Car", "Bus", "Bicycle", "Train"] },
-    { definition: "A device used for writing or drawing with ink", word: "Pen", options: ["Pen", "Pencil", "Marker", "Crayon"] },
-    
+// Data
+const allWords = [
+    "contract", "assurance", "determine", "engage", "establish", "provision", "resolve", "specific", "assure",
+    "cancel", "cancelled", "obligation", "obligatory", "provide", "specify", "specification", "attract", "compare",
+    "competition", "consume"
+];
+
+let gameData = [
+    { definition: "A binding agreement that is enforceable by law", word: "contract" },
+    { definition: "A binding commitment to do or give or refrain from something", word: "assurance" },
+    { definition: "Find out or learn with certainty, as by making an inquiry", word: "determine" },
+    { definition: "Consume all of one's attention or time", word: "engage" },
+    { definition: "Set up or foundy", word: "establish" },
+    { definition: "The activity of supplying something", word: "provision" },
+    { definition: "Find a solution or answer", word: "resolve" },
+    { definition: "Stated explicitly or in detail", word: "specific" },
+    { definition: "Inform positively and with certainty and confidence", word: "assure" },
+    { definition: "Declare null and void", word: "cancel" },
+    { definition: "The state of being bound to do or pay something", word: "obligation" },
+    { definition: "Required by compulsion or convention", word: "obligatory" },
+    { definition: "Give something useful or necessary to", word: "provide" },
+    { definition: "Be particular about", word: "specify" },
+    { definition: "The act of naming explicitly", word: "specification" },
+    { definition: "Exert a force on", word: "attract" },
+    { definition: "Examine and note the similarities or differences of", word: "compare" },
+    { definition: "The act of contending with others for rewards or resources", word: "competition" },
+    { definition: "Take in as food", word: "consume" },
 ];
 
 let currentWordIndex = 0;
 let playerScore = 0;
 
 function loadWord() {
+    // Shuffle the gameData array to randomize the questions
+    gameData = shuffle(gameData);
+
     const currentWordData = gameData[currentWordIndex];
     document.getElementById("wordDefinition").textContent = currentWordData.definition;
 
-    // Shuffle the English word options to randomize their order
-    const shuffledOptions = shuffle(currentWordData.options);
+    // Get three random options from the pool of all words (excluding the correct word)
+    const optionsPool = allWords.filter(word => word !== currentWordData.word);
+    const randomOptions = getRandomElements(optionsPool, 3);
 
-    document.getElementById("option1").textContent = shuffledOptions[0];
-    document.getElementById("option2").textContent = shuffledOptions[1];
-    document.getElementById("option3").textContent = shuffledOptions[2];
-    document.getElementById("option4").textContent = shuffledOptions[3];
+    // Include the correct word among the options and shuffle them
+    const shuffledOptions = shuffle([...randomOptions, currentWordData.word]);
+
+    // Add the shuffled options as the text content of the corresponding buttons
+    for (let i = 1; i <= shuffledOptions.length; i++) {
+        document.getElementById("option" + i).textContent = shuffledOptions[i - 1];
+    }
 
     // Hide the Play Again button (if it was shown previously)
     document.getElementById("playAgainButtonDiv").style.display = "none";
 }
+
+function getRandomElements(array, numElements) {
+    const shuffledArray = shuffle(array);
+    return shuffledArray.slice(0, numElements);
+}
+
 
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
@@ -53,7 +88,7 @@ function checkAnswer(selectedOption) {
     if (currentWordIndex < gameData.length) {
         loadWord();
     } else {
-        document.getElementById("resultMessage").textContent = "Game Over! You have completed all the words.";
+        document.getElementById("resultMessage").textContent = "You got " + playerScore + " correct answers out of " + gameData.length;
         // Implement any other actions when the game is over
         document.getElementById("playAgainButtonDiv").style.display = "block";
     }
@@ -79,4 +114,3 @@ function playAgain() {
 
 // Load the first word when the page loads
 loadWord();
-
