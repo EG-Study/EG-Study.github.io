@@ -138,7 +138,7 @@ let score = 0;
 let currentPuzzleIndex = 0;
 
 // Event listener for the "Play" button
-document.getElementById("playBtn").addEventListener("click", startGame);
+document.querySelector("#playBtn").addEventListener("click", startGame);
 
 function startGame() {
     // Clear the game container
