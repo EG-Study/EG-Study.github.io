@@ -114,7 +114,7 @@
             <div class="container mt-5">
                 <div class="card">
                     <div class="card-header">
-                        <h4>CHOOSE THE WORD</h4>
+                        <h4 class="text-center">CHOOSE THE WORD</h4>
                     </div>
                     <div class="card-body">
                         <!-- Game content here -->
@@ -142,24 +142,40 @@
                             </div>
                         </div>
                     </div>
-                </div>
-        
-                <!-- Display player score and feedback message -->
-                <div class="mt-3">
-                    <p>Score: <span id="playerScore">0</span></p>
-                    <p id="feedbackMessage"></p>
-                    <p id="resultMessage"></p>
-                </div>
-                
-                <!-- Play Again button (hidden by default) -->
-                <div class="mt-3" id="playAgainButtonDiv" style="display: none;">
-                    <button class="btn btn-primary" onclick="playAgain()">Play Again!</button>
+                    <!-- Display player score and feedback message -->
+                    <div class="ms-4">
+                        <p>Score: <span id="playerScore">0</span></p>
+                        <p id="feedbackMessage"></p>
+                        <p id="resultMessage"></p>
+                    </div>
+                    
+                    <!-- Play Again button (hidden by default) -->
+                    <div class="ms-4 mb-2" id="playAgainButtonDiv" style="display: none;">
+                        <button class="btn btn-primary" onclick="playAgain()">Play Again!</button>
+                    </div>
                 </div>
             </div>
         </main>
         
         <!-- Second Game -->
-
+        <main>
+            <div class="container mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-center">Word Odyssey: Voyage of Vocabulary</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mt-3">
+                            <button id="playBtn" class="btn btn-primary">Play</button>
+                            </div>
+                            <div id="gameContainer" class="mt-4">
+                            <!-- Game content will be dynamically generated here -->
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </main>
         <!-- Footer -->
         <footer class="bg-light text-dark py-4">
             <div class="container text-center">
