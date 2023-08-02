@@ -30,6 +30,14 @@ let gameData = [
 let currentWordIndex = 0;
 let playerScore = 0;
 
+// Event listener for the "Play" button
+document.querySelector("#playBtn_1").addEventListener("click", startGame_1);
+
+function startGame_1() {
+    document.getElementById("playBtn_1").style.display = 'none';
+    document.getElementById("gameContent").style.display = "block";
+}
+
 function loadWord() {
     // Shuffle the gameData array to randomize the questions
     gameData = shuffle(gameData);
@@ -144,7 +152,6 @@ function startGame() {
     // Clear the game container
     document.getElementById("gameContainer").innerHTML = '';
 
-    // Show game instructions (you can use modal or dynamically populate content)
     // Generate game worlds for player selection
     showGameWorlds();
 }

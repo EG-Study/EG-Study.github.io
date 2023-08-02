@@ -110,6 +110,7 @@
             </nav>
         </header>
 
+        
         <!-- Content -->
         <main>
             <div class="container mt-3">
@@ -117,42 +118,47 @@
                     <div class="card-header">
                         <h4 class="text-center">Word Quest: The Language Showdown</h4>
                     </div>
-                    <div class="card-body">
-                        <!-- Game content here -->
-                        <h5 id="wordDefinition">Definition</h5>
-                        <div class="row">
-                            <div class="col-md-6 mb-2">
-                                <button class="btn btn-outline-primary btn-lg btn-block container-fluid" onclick="checkAnswer(1)">
-                                    <span id="option1">Option 1</span>
-                                </button>
+                    <div class="card-body" id="game_1">
+                        <div class="text-center mt-3" id="playBtn_1">
+                            <p class="ms-4">Guess the answer through its meaning</p>
+                            <button class="btn btn-primary">Play</button>
                             </div>
-                            <div class="col-md-6 mb-2">
-                                <button class="btn btn-outline-primary btn-lg btn-block container-fluid" onclick="checkAnswer(2)">
-                                    <span id="option2">Option 2</span>
-                                </button>
+                        </div> 
+                        <div id="gameContent" style="display: none;">
+                            <h5 id="wordDefinition" class="text-center mb-4">Definition</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <button class="btn btn-outline-primary btn-lg btn-block container-fluid" onclick="checkAnswer(1)">
+                                        <span id="option1">Option 1</span>
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <button class="btn btn-outline-primary btn-lg btn-block container-fluid" onclick="checkAnswer(2)">
+                                        <span id="option2">Option 2</span>
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <button class="btn btn-outline-primary btn-lg btn-block container-fluid" onclick="checkAnswer(3)">
+                                        <span id="option3">Option 3</span>
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-outline-primary btn-lg btn-block container-fluid" onclick="checkAnswer(4)">
+                                        <span id="option4">Option 4</span>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-md-6 mb-2">
-                                <button class="btn btn-outline-primary btn-lg btn-block container-fluid" onclick="checkAnswer(3)">
-                                    <span id="option3">Option 3</span>
-                                </button>
+                            <div class="ms-4">
+                                <p><b style="color: red;">Score: <span id="playerScore">0</span></b></p>
+                                <p id="feedbackMessage"></p>
+                                <p id="resultMessage"></p>
                             </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-outline-primary btn-lg btn-block container-fluid" onclick="checkAnswer(4)">
-                                    <span id="option4">Option 4</span>
-                                </button>
+                            
+                            <!-- Play Again button (hidden by default) -->
+                            <div class="ms-4 mb-2" id="playAgainButtonDiv">
+                                <button class="btn btn-primary" onclick="playAgain()">Play Again!</button>
                             </div>
                         </div>
-                    </div>
-                    <!-- Display player score and feedback message -->
-                    <div class="ms-4">
-                        <p>Score: <span id="playerScore">0</span></p>
-                        <p id="feedbackMessage"></p>
-                        <p id="resultMessage"></p>
-                    </div>
-                    
-                    <!-- Play Again button (hidden by default) -->
-                    <div class="ms-4 mb-2" id="playAgainButtonDiv" style="display: none;">
-                        <button class="btn btn-primary" onclick="playAgain()">Play Again!</button>
                     </div>
                 </div>
             </div>
@@ -166,8 +172,9 @@
                         <h4 class="text-center">Word Odyssey: Voyage of Vocabulary</h4>
                     </div>
                     <div class="card-body">
-                        <div class="text-center mt-3">
-                            <button id="playBtn" class="btn btn-primary">Play</button>
+                        <div class="text-center mt-3" id="playBtn">
+                            <p class="text-center">Unscramble the word</p>
+                            <button class="btn btn-primary">Play</button>
                             </div>
                             <div id="gameContainer" class="mt-4">
                             <!-- Game content will be dynamically generated here -->
