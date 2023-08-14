@@ -39,6 +39,7 @@ let gameData = [
     { definition: "Enable sb to do sth / assist sb in doing sth /ensure S+V /allow sb to +VO", word:"thay cho cấu trúc help sb do sth" },
 ];
 
+let usedWordIndices = [];
 let currentWordIndex = 0;
 let playerScore = 0;
 
@@ -51,10 +52,26 @@ function startGame_1() {
 }
 
 function loadWord() {
-    // Shuffle the gameData array to randomize the questions
-    gameData = shuffle(gameData);
+    if (usedWordIndices.length === gameData.length) {
+        // All words have been used in this round
+        endRound();
+        return;
+    }
 
-    const currentWordData = gameData[currentWordIndex];
+    // Shuffle the gameData array if all words have been used once
+    if (usedWordIndices.length === 0) {
+        gameData = shuffle(gameData);
+    }
+
+    // Find a new word index that hasn't been used in this round
+    let newWordIndex;
+    do {
+        newWordIndex = Math.floor(Math.random() * gameData.length);
+    } while (usedWordIndices.includes(newWordIndex));
+
+    usedWordIndices.push(newWordIndex);
+
+    const currentWordData = gameData[newWordIndex];
     document.getElementById("wordDefinition").textContent = currentWordData.definition;
 
     // Get three random options from the pool of all words (excluding the correct word)
@@ -113,10 +130,19 @@ function checkAnswer(selectedOption) {
         document.getElementById("playAgainButtonDiv").style.display = "block";
     }
 }
+
+function endRound() {
+    // Display end-of-round message or perform any other actions
+    // ...
+    // Reset used word indices for the next round
+    usedWordIndices = [];
+}
+
 function playAgain() {
     // Reset the game state
     currentWordIndex = 0;
     playerScore = 0;
+    usedWordIndices = [];
 
     // Load the first word again
     loadWord();
