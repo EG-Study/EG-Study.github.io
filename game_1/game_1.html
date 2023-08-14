@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>English Study</title>
-        <link rel="icon" type="image/x-icon" href="./favicon.png">
+        <link rel="icon" type="image/x-icon" href="../favicon.png">
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -27,8 +27,8 @@
         <header>
             <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #FD8D14;">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="">
-                        <img src="./logo.png" alt="Logo" style="width: 100px;" class="round-pill">
+                    <a class="navbar-brand" href="../index.html">
+                        <img src="../logo.png" alt="Logo" style="width: 100px;" class="round-pill">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
                         <span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href=""><b style="font-size: 20px;">Home</b></a>
+                                <a class="nav-link" href="../index.html"><b style="font-size: 20px;">Home</b></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><b style="font-size: 20px;">Vocabulary</b></a>
@@ -124,42 +124,53 @@
         
         <!-- Content -->
         <main>
-            <div class="container mt-3">
+            <div class="container mt-3 mb-3">
                 <div class="card g-border">
                     <div class="card-header bg-header">
                         <h4 class="text-center">Word Quest: The Language Showdown</h4>
                     </div>
                     <div class="card-body" id="game_1">
-                        <div class="text-center mt-3" id="playBtn_1">
-                            <p class="ms-4">Guess the answer through its meaning</p>
-                            <a href="./game_1/game_1.html">
-                                <button class="btn btn-danger">Play</button>
-                            </a>
-                            </div> 
-                        </div> 
+                        <div class="text-center mt-3" id="playBtn_1"></div> 
+                        <div id="gameContent">
+                            <h5 id="wordDefinition" class="text-center mb-4">Definition</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <button class="btn btn-success btn-lg btn-block container-fluid" onclick="checkAnswer(1)">
+                                        <span id="option1">Option 1</span>
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <button class="btn btn-danger btn-lg btn-block container-fluid" onclick="checkAnswer(2)">
+                                        <span id="option2">Option 2</span>
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <button class="btn btn-warning btn-lg btn-block container-fluid" onclick="checkAnswer(3)">
+                                        <span id="option3">Option 3</span>
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-info btn-lg btn-block container-fluid" onclick="checkAnswer(4)">
+                                        <span id="option4">Option 4</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="ms-4">
+                                <p><b style="color: red;">Score: <span id="playerScore">0</span></b></p>
+                                <p id="feedbackMessage"></p>
+                                <p id="resultMessage"></p>
+                            </div>
+                            
+                            <!-- Play Again button (hidden by default) -->
+                            <div class="ms-4 mb-2" id="playAgainButtonDiv">
+                                <button class="btn btn-primary" onclick="playAgain()">Play Again!</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
-        
-        <!-- Second Game -->
-        <main>
-            <div class="container mt-3 mb-3">
-                <div class="card g-border">
-                    <div class="card-header bg-header">
-                        <h4 class="text-center">Word Odyssey: Voyage of Vocabulary</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="text-center mt-3" id="playBtn">
-                            <p class="text-center">Unscramble the word</p>
-                            <a href="game_2/game_2.html">
-                                <button class="btn btn-danger">Play</button>
-                            </a>
-                        </div> 
-                    </div>
-                </div>
-            </div>
-        </main>
+
         <!-- Footer -->
         <footer class="text-dark py-4" style="background-color: #FFE17B;">
             <div class="container text-center">
@@ -174,3 +185,4 @@
         </footer>
     </body>
 </html>
+<script src="./game_1.js"></script>
